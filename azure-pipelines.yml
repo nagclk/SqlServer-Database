@@ -29,4 +29,4 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: echo $(formula1dlaccountkey)
+    script: 'echo $(formula1dlaccountkey)'
