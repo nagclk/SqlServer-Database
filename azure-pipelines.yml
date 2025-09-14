@@ -19,3 +19,14 @@ steps:
     KeyVaultName: 'formula11kv'
     SecretsFilter: 'formula1dlaccountkey'
     RunAsPreJob: false
+
+- task: AzureKeyVault@2
+  inputs:
+    azureSubscription: 'azure-nagpoc-sc'
+    KeyVaultName: 'formula11kv'
+    SecretsFilter: 'formula1dlaccountkey'
+    RunAsPreJob: false
+
+- task: CmdLine@2
+  inputs:
+    script: echo $(formula1dlaccountkey)
