@@ -13,6 +13,7 @@ steps:
 - script: echo 'show keyvault secret'
   displayName: print keyvault secret
 - task: AzureKeyVault@2
+  displayName: Read Key vault secret
   inputs:
     azureSubscription: 'DevOps-Keyvault-Connect'
     KeyVaultName: 'formula11kv'
