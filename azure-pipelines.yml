@@ -28,5 +28,20 @@ steps:
     RunAsPreJob: false
 
 - task: CmdLine@2
+  displayName: write secrets into file
   inputs:
-    script: 'echo $(formula1dlaccountkey)'
+    script: |
+      'echo $(formula1dlaccountkey)'
+      echo $(formula1dlaccountkey) > secret.txt
+      cat secret.txt
+
+- task: CopyFiles@2
+  inputs:
+    Contents: 'secret.txt'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
